@@ -1,10 +1,10 @@
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
 # go-ras-lite
 ------
 
 RSA分为一下几部
 
-> * 生成公私腰
+> * 生成公私钥
 > * 加密
 > * 解密
 
@@ -12,8 +12,8 @@ RSA分为一下几部
 
 ------
 
-## 生产公私腰
-公腰{e,n}用来加密使用,私钥{d,n}用来解密使用。
+## 生产公私钥
+公钥{e,n}用来加密使用,私钥{d,n}用来解密使用。
 
 ### 1. 生成一个质数
 golang自带随机生成质数的一些工具方法。
@@ -72,7 +72,7 @@ $$D=(K*φ(N)+1)/E$$
  d.Add(d,big.NewInt(1))
  d.Div(d,e)
 ```
-由上面4步，公私腰生成完成
+由上面4步，公私钥生成完成
 ## 加密
 $$c=m^E mod N$$
 ```go
@@ -87,3 +87,5 @@ s := big.NewInt(0).SetBytes(c.Bytes())
 BigPow(s,d)
 s.Mod(s,n)
 ```
+
+* [Blog](https://blog.csdn.net/wangjavafans/article/details/79962832)
