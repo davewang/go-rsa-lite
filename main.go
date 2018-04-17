@@ -73,7 +73,7 @@ func main() {
 	fmt.Printf("q: %v \n", q)
 	fmt.Printf("k: %v \n", k)
 
-    //e 随机数 必须为奇数 不同与φ(n)的公因数 并奇满足
+    //e 随机数 必须为奇数 不同与φ(n)的公因数 并满足 (k * q + 1) mod e = 0
     e := RandExponent(q, k,int64(co))
     //d = (k * q + 1)/e
     d := big.NewInt(1).Mul(big.NewInt(int64(k)),q)
