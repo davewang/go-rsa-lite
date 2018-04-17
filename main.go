@@ -18,12 +18,11 @@ func NewPrime(c int) *big.Int {
 
 }
 func BigPow(c *big.Int,m *big.Int)  {
-	n := m.Int64()-1
-	m1 := big.NewInt(c.Int64())
-	for n>0 {
-		c.Mul(c,m1)
-		n-=1
-	}
+    //golang big包内部已经实现montgomery computes
+	var limit big.Int
+	limit.Exp(c, m, nil)
+	c=&limit
+
 
 }
 func RandExponent(q *big.Int,k int,c int64) *big.Int{
@@ -55,7 +54,7 @@ func RandExponent(q *big.Int,k int,c int64) *big.Int{
 func main() {
 
 
-	co := 9
+	co := 19
 	//生产2个质数
 	p1 := NewPrime(co)
 	p2 := NewPrime(co)
